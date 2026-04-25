@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import NavUserIcon from "@/assets/user.png"
+import Navlink from './Navlink';
 
 const Navbar = () => {
     return (
@@ -11,9 +12,15 @@ const Navbar = () => {
 
                 <div>
                     <ul className='flex gap-2 text-[#706F6F]'>
-                        <li><Link href={"/"}>Home</Link></li>
-                        <li><Link href={"about"}>About</Link></li>
-                        <li><Link href={"career"}>Career</Link></li>
+                        <li>
+                            <Navlink href={"/"}>Home</Navlink>
+                        </li>
+                        <li>
+                            <Navlink href={"/about-us"}>About</Navlink>
+                        </li>
+                        <li>
+                            <Navlink href={"/career"}>Career</Navlink>
+                        </li>
                     </ul>
                 </div>
 
