@@ -23,8 +23,7 @@ const NewsCategoryPage = async ({ params }) => {
                     <h4 className="font-medium text-xl mb-4">All News</h4>
                     {news.length > 0 ? news.map((n, index) => {
                         return (
-                            <NewsCard key={index} news={n}>
-                            </NewsCard>
+                            <NewsCard key={index} news={n} />
                         )
                     }) : <NoNewsFound />}
                 </div>
