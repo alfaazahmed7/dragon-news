@@ -1,17 +1,18 @@
-import LeftSidebar from "@/components/homepage/news/LeftSidebar";
 import RightSidebar from "@/components/homepage/news/RightSidebar";
-import { getCategories, getNewsByCategories, getNewsDetailsById } from "@/lib/data";
+import { getCategories, getNewsDetailsById } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { CiBookmark, CiShare2 } from "react-icons/ci";
-import { FaEye } from "react-icons/fa";
-import { IoIosStar } from "react-icons/io";
+
+export const metadata = {
+    title: "Dragon News Details",
+    description: "Best news portal in Bangladesh, this site is trusted by millions",
+};
 
 const NewsDetailsPage = async ({ params }) => {
     const { id } = await params;
-    console.log(id, "params");
 
     const news = await getNewsDetailsById(id);
     const categories = await getCategories();
@@ -21,7 +22,7 @@ const NewsDetailsPage = async ({ params }) => {
             <div className="grid grid-cols-12 gap-5">
 
                 <div className="col-span-3">
-                    
+
                 </div>
 
                 <div className="max-w-4xl mx-auto my-8 col-span-6">

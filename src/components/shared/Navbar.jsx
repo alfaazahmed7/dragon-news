@@ -26,7 +26,7 @@ const Navbar = () => {
 
                 <div className='flex gap-2'>
                     <Image src={NavUserIcon} width={40} height={40} alt='NavUserIcon' />
-                    <button className='bg-[#403F3F] px-3 py-2 text-white'>Login</button>
+                    <Link href={"/login"} className='bg-[#403F3F] px-3 py-2 text-white'>Login</Link>
                 </div>
             </div>
         </div>

@@ -1,12 +1,13 @@
 import LeftSidebar from '@/components/homepage/news/LeftSidebar';
 import RightSidebar from '@/components/homepage/news/RightSidebar';
-import NewsCard from '@/components/homepage/NewsCard';
+import NewsCard from '@/components/homepage/news/NewsCard';
 import NoNewsFound from '@/components/shared/NoNewsFound';
 import { getCategories, getNewsByCategories } from '@/lib/data';
 import React from 'react';
 
 const NewsCategoryPage = async ({ params }) => {
     const { id } = await params;
+    console.log(id, "id");
 
     const categories = await getCategories();
     const news = await getNewsByCategories(id);
