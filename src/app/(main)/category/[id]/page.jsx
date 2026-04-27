@@ -7,7 +7,6 @@ import React from 'react';
 
 const NewsCategoryPage = async ({ params }) => {
     const { id } = await params;
-    console.log(id, "id");
 
     const categories = await getCategories();
     const news = await getNewsByCategories(id);

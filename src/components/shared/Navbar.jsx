@@ -9,15 +9,14 @@ import { authClient } from '@/lib/auth-client';
 const Navbar = () => {
     const { data: session, isPending } = authClient.useSession();
     const user = session?.user;
-    console.log(user, "user");
 
     return (
         <div className='w-10/12 mx-auto mb-14'>
-            <div className='flex items-center justify-between'>
+            <div className='grid grid-cols-3 items-center'>
                 <div></div>
 
                 <div>
-                    <ul className='flex gap-2 text-[#706F6F]'>
+                    <ul className='flex justify-center gap-2 text-[#706F6F]'>
                         <li>
                             <Navlink href={"/"}>Home</Navlink>
                         </li>
@@ -30,7 +29,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div>
+                <div className='flex justify-end'>
                     {isPending ?
                         <span className="loading loading-spinner loading-xl"></span>
                         :
