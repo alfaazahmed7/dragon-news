@@ -1,13 +1,19 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import NavUserIcon from "@/assets/user.png"
 import Navlink from './Navlink';
+import { authClient } from '@/lib/auth-client';
 
 const Navbar = () => {
+    const { data: session, isPending } = authClient.useSession();
+    const user = session?.user;
+    console.log(user, "user");
+
     return (
         <div className='w-10/12 mx-auto mb-14'>
-            <div className='flex justify-between items-center'>
+            <div className='flex items-center justify-between'>
                 <div></div>
 
                 <div>
@@ -24,9 +30,31 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className='flex gap-2'>
-                    <Image src={NavUserIcon} width={40} height={40} alt='NavUserIcon' />
-                    <Link href={"/login"} className='bg-[#403F3F] px-3 py-2 text-white'>Login</Link>
+                <div>
+                    {isPending ?
+                        <span className="loading loading-spinner loading-xl"></span>
+                        :
+                        user ?
+                            <div className='flex gap-2 items-center'>
+                                <p className='font-medium'>Hello, {user?.name}</p>
+                                <Image
+                                    src={user?.image || NavUserIcon}
+                                    width={40}
+                                    height={40}
+                                    alt='NavUserIcon'
+                                />
+                                <button
+                                    className='bg-[#403F3F] px-3 py-2 text-white'
+                                    onClick={async () => await authClient.signOut()}
+                                >Log Out</button>
+                            </div>
+                            :
+                            <button
+                                className='bg-[#403F3F] px-3 py-2 text-white'
+                            >
+                                <Link href={"/login"}>Login</Link>
+                            </button>
+                    }
                 </div>
             </div>
         </div>
